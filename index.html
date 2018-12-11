@@ -87,17 +87,18 @@
 
 </style>
 <body>
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 <center><h1>Visualizing Crimes in Chicago</h1></center>
 <div width="100%">
 <div align="left" width="45%"><a id="arrest" href="#" >Arrest Ratio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:domesticFunction();" >Domestic Violence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:reset();" >Reset</a></div>
-<div align="right" width="45%"><a href="documentation.html" target="_blank">Documentation</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demonstration video</a></div>
+<div align="right" width="45%"><a href="Documentation.pdf" target="_blank">Documentation</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=yOWjZfYDv5c&feature=youtu.be" target="_blank">Demonstration video</a></div> 
 </div>
 
 <div class='container1' style="float:left;width: 100%;">
 	<div style="float:left;width: 40%;">
+	<text style = "font-size:12px">Note: Click on wards to see crime details in them. Reset to clear colors on map.</text>
 		<svg id="svg1" width="400" height="500">
 		</svg>
 	</div>
@@ -204,13 +205,20 @@ d3.json("Wards.json", function(error, topology) {
     var tipSVG = d3.select("#tipDiv")
       .append("svg")
       .attr("width", 300)
-      .attr("height", 120)
+      .attr("height", 130)
 	  .attr("border","solid 2px ")
 	  .attr("border-color","black");
 
+	  tipSVG.append("text")
+      .text( 'WARD NUMBER : '+t_id)
+	  .attr("font-weight","bold")
+	  .attr("x", 0)
+      .attr("y", 13)
+	  .attr("font-size",12);
+	  
     tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 10)
+      .attr("y", 20)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -220,7 +228,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[0].prim_type + ' - '+temp[0].count)
       .attr("x", 10)
-      .attr("y", 20)
+      .attr("y", 30)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -228,7 +236,7 @@ d3.json("Wards.json", function(error, topology) {
 				
     tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 30)
+      .attr("y", 40)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -238,7 +246,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[1].prim_type + ' - '+temp[1].count)
       .attr("x", 10)
-      .attr("y", 40)
+      .attr("y", 50)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -246,7 +254,7 @@ d3.json("Wards.json", function(error, topology) {
 	  
     tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 50)
+      .attr("y", 60)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -256,7 +264,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[2].prim_type + ' - '+temp[2].count)
       .attr("x", 10)
-      .attr("y", 60)
+      .attr("y", 70)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -264,7 +272,7 @@ d3.json("Wards.json", function(error, topology) {
 	  
 	  tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 70)
+      .attr("y", 80)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -274,7 +282,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[3].prim_type + ' - '+temp[3].count)
       .attr("x", 10)
-      .attr("y", 80)
+      .attr("y", 90)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -282,7 +290,7 @@ d3.json("Wards.json", function(error, topology) {
 	  
 	  tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 90)
+      .attr("y", 100)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -292,7 +300,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[4].prim_type + ' - '+temp[4].count)
       .attr("x", 10)
-      .attr("y", 100)
+      .attr("y", 110)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -300,7 +308,7 @@ d3.json("Wards.json", function(error, topology) {
 	  
 	  tipSVG.append("rect")
       .attr("fill", "steelblue")
-      .attr("y", 110)
+      .attr("y", 120)
       .attr("width", 0)
       .attr("height", 10)
       .transition()
@@ -310,7 +318,7 @@ d3.json("Wards.json", function(error, topology) {
     tipSVG.append("text")
       .text(temp[5].prim_type + ' - '+temp[5].count)
       .attr("x", 10)
-      .attr("y", 120)
+      .attr("y", 130)
 	  .attr("font-size",12)
       .transition()
       .duration(1000)
@@ -591,7 +599,7 @@ d3.csv("TotalCrime.csv", function(error, data) {
                .duration(500)		
                .style("opacity", 0);
         	})
-        .on("click", function(d) {
+        .on("mouseover", function(d) {
              var y_id = this.id;
              //console.log(y_id);
 			 tool_tip.hide();
